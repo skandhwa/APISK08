@@ -1,0 +1,65 @@
+Day to Day Activities 
+-----------------------------------------
+
+We are working on project "Anthem" which is one of the largest health insurance provider in US
+We are a part of Shoppers portal , in which I am majorly looking into Customer management system , 
+As of now we are following agile methodology where the sprint last for 2 weeks , 
+In a specific sprint  we do functional testing of the user stories and we also work on automation scripting of the user stories from the previous sprint . 
+
+
+Framework explanation 
+-------------------------------------------
+
+We are using Page object model as our design pattern and using maven as a build tool . 
+Our framework majorly has two folders one is src/main and the second one is src/test
+Under src/main we have added all the configuration files like declaring property files , constant data path 
+and under src/test we have added all the test and page classes , under page classes we are writing all the locators and methods related to the specific page and under Test classes we have declared all the test classes that starts with @Test annotation 
+We also have utilities package that contains utility like fetching data from excel , from property file , initializing the web driver and the common functions . 
+
+We have used data providers, listeners for taking screenshot on failed scenario, retry analyzer that will re execute whenever a script fails and our framework is also capable to do cross browser execution 
+
+We do our execution from testing.xml file where we also have created groups and as per our need we can execute sanity or regression or smoke scenarios .
+
+As a part of reporting we have attached extent report which gives a better look and feel and we also have configured a pipeline in Jenkins which automatically executes the script biweekly and it picks up the scenarios hosted in GIT 
+
+
+How have OOPS concept in the framework ??
+---------------------------------------------------------------------
+
+1. Inheritance 
+In our framework we have multiple test classes which are being inherited from Driver Initialization because initializing driver is done separately , also Test listener class is inherited from Driver initialization 
+
+
+2.Abstraction 
+
+  We have used multiple interfaces , webDriver is an interface,JavaScriptExecutor is an interface,
+Takescreenshot is interface,all Listener are interfaces
+
+
+3. Polymorphism 
+We have implemented implicit wait that contains different arguments for the same method like 
+Duration.ofSeconds()
+Duration.ofMins()
+
+We have implemented all the methods for iTestListener which are overriden methods
+
+4.Encapsulation 
+There are certain classes which contains private members and we are using these classes through getter and setter method 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

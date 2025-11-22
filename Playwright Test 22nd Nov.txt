@@ -1,0 +1,30 @@
+import { test, expect, request } from '@playwright/test';
+
+test('My API Test', async () => {
+
+  const apiContext = await request.newContext();
+
+  const authToken = 'a682a89b74963538f47d3ec72b6af8f655ef7c20f8d1a7e3ad8582ffd8dfdf64';
+
+  const response = await apiContext.post('https://gorest.co.in/public/v2/users', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`,
+    },
+    data: {
+      name: 'latham',
+      gender: 'male',
+      email: 'sk1243@gmail.com',
+      status: 'active',
+    },
+  });
+
+  console.log('Status is:', response.status());
+
+  const responseBody = await response.json();
+  console.log('Response Body is:', responseBody);
+
+  await apiContext.dispose();
+
+   expect(response.status()).toBe(201);
+});
